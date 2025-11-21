@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./IMG-README.png" width="100%" />
+</p>
+
 # Guía de Despliegue Local de PostgreSQL & pgAdmin con Docker
 
 ## Introducción
