@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres_db_auto
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./scripts:/docker-entrypoint-initdb.d/              # Mapea los scripts y dumps locales hacia el contenedor.
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres_network
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin_auto
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+    networks:
+      - postgres_network
+
+volumes:
+  postgres_data:
+
+networks:
+  postgres_network:
+    driver: bridge

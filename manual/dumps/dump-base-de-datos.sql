@@ -1,0 +1,1 @@
+-- Este archivo debe contener el dump de la estructura de la base de datos que vamos a migrar al entorno local.
